@@ -1,0 +1,579 @@
+---
+title: HTML and CSS Learning Roadmap for Absolute Beginners
+date: 2019-05-15
+---
+
+
+*** This is Text content included in my [HTML and CSS course]() ***
+
+Outline:
+
+1. What is HTML?
+2. What is HTML use for?
+
+## What is HTML?
+
+HTML means hypertext markup language. It is the standard markup language for creating Web pages.
+
+## What is HTML used for?
+   
+   HTML is used to make the structure of a web page with the use of elements that tell the browser how to display the content. 
+
+## What is HTML tag?
+
+   HTML tags are the predefined keywords that are used to instruct web browser on how to format and display the content. 
+
+ ## Features of HTML tags.
+  
+   1. Every html tag has these  ```< >  //brackets. Eg. <header> </header>```
+   2. Every HTML tag is desinged to perform a specific task(s). That is, tags are different from one another.
+   3. Most html tags have  ```<opening> </closing>``` tags (except some tags such as ```<br> , <img>``` etc).
+   4. Any html tag with only ```<opening>``` cannot have decendants, children or cannot be nested as in this code:
+    
+    ```
+    <html>
+        <head></head>
+        <body></body>
+    </html>
+    ```
+    Note: both the head and body tags are decendants of the html tag.
+
+ ## List of widely use html tags.
+
+    **What are meta Elements/tags?**
+
+    Meta elements are tags used in HTML documents to provide structured metadata (a set of data that describes and gives information ) about a webpage. 
+    
+    ```
+    <meta charset="utf-8">
+    //is used to set character to utf-8 which is a character encoding 
+    //capable of encoding all characters on the web. 
+    //It replaced ascii as the default character encoding. 
+
+    <meta name=“author” content=“Ayobami”>  
+    //sets the author of the web page
+
+    <meta name=“description” content=“Smart learning map”>  
+    //sets the description of the web page
+
+    <meta name=“keyword” content=“html5, css3, secrets”> 
+    //sets the keywords found on the web page
+
+    <meta name=“viewpoint” content=“width=device-width, initial-scale=1”> 
+    //sets the viewpoint to properly display 
+    //the web page on different screens, desktop, tablet and mobile.
+
+    <meta name=“robots” content="noindex, nofollow”>  
+    //tells web crawler no to index or follow a page. 
+    ```
+
+    
+## Other HTML tags and their uses.
+
+
+Tag	                                | Description
+    ------------------------------------|------------------
+     <!-- ... -->                       | Defines a comment
+     <!DOCTYPE>                         | Defines the document type
+     ```<a>``` (achor tag) 	                    | Defines a hyperlink (used to ling pages)
+     ```<h1>```, ```<h2>```, ```<h3>```, ```<h4>```,```<h5>```, ```<h6>```             | Defines HTML headings 
+     ```<head>```	                            | Defines information about the document
+     ```<header>```                             | Defines a header for a document or section
+     ```<hr>```                                 | Defines a thematic change in the content
+     ```<html>```	                            | Defines the root of an HTML document
+     ```<i>```                                  | Defines a part of text in an alternate voice or mood
+     ```<iframe>```                             | Defines an inline frame
+     ```<img>```                                | Defines an image
+     ```<input>```                              | Defines an input control
+     ```<article>```                            | Defines an article
+     ```<aside>```	                            | Defines content aside from the page content
+     ```<audio>```	                            | Defines sound content
+     ```<b>```	                                | Defines bold text
+     ```<blockquote>```                         | Defines a section that is quoted from another source
+     ```<body>```	                            | Defines the document's body
+     ```<br>```	      | Defines a single line break
+     ```<button>```	  | Defines a clickable button
+     ```<canvas>```	  | Used to draw graphics, on the fly, via scripting (usually JavaScript)
+     ```<caption>```	  | Defines a table caption
+     ```<label>```  | Defines a label for an input element
+     ```<legend>```	  | Defines a caption for a fieldset element
+     ```<li>```	      | Defines a list item
+     ```<link>```	      | Defines the relationship between a document and an external resource (most used to ```<link to style sheets)
+     ```<main>```	      | Specifies the main content of a document
+     ```<meta>```	      | Defines metadata about an HTML document
+     ```< meter>```	  | Defines a scalar measurement within a known range (a gauge)
+     ```<nav>```	      | Defines navigation links
+     ```<object>```	  | Defines an embedded object
+     ```<ol>```	      | Defines an ordered list
+     ```<optgroup>```	  | Defines a group of related options in a drop-down list
+     ```<option>```	  | Defines an option in a drop-down list
+     ```<p>```	      | Defines a paragraph
+     ```<pre>```	      | Defines preformatted text
+     ```<progress>```	  | Represents the progress of a task
+     ```<script>```	  | Defines a client-side script
+     ```<section>```	  | Defines a section in a document
+     ```<select>```	  | Defines a drop-down list
+     ```<small>```	  | Defines smaller text
+     ```<source>```	  | Defines multiple media resources for media elements (```<video> and <audio>```)
+     ```<span>```	      | Defines a section in a document
+     ```<strong>```	  | Defines important text
+     ```<style>```	  | Defines style information for a document
+     ```<summary>```	  | Defines a visible heading for a ```<details>``` element
+     ```<svg>```	      | Defines a container for SVG graphics
+     ```<table>```	  | Defines a table
+     ```<tbody>```	  | Groups the body content in a table
+     ```<td>```	      | Defines a cell in a table
+     ```<textarea>```	  | Defines a multiline input control (text area)
+     ```<tfoot>```	  | Groups the footer content in a table
+     ```<th>```	      | Defines a header cell in a table
+     ```<thead>```	  | Groups the header content in a table
+     ```<time>```	      | Defines a date/time
+     ```<title>```	  | Defines a title for the document
+     ```<tr>```	      | Defines a row in a table
+     ```<track>```	  | Defines text tracks for media elements (```<video> and <audio>```)
+     ```<u>```	      | Defines text that should be stylistically different from normal text
+     ```<ul>```	      | Defines an unordered list
+     ```<var>```	      | Defines a variable
+     ```<video>```	  | Defines a video or movie
+
+## HTML Structure 
+
+HTML is structured as a DOM tree. the DOM tree is similar to the structure of a family tree. Like in this image, the mother has three children or decendants. So, the relationship between the mother and her children is known as parent-children or ancestor-decendant relationship.
+
+Also, the children are sibling to one another, so the have sibling relationship just like in a family tree.
+
+This image shows how it can be represented in html code. This is the parent. This is its opening tag and this is its closing tag. Its decendants are between its opening and closing tags here.
+
+Let's see how it is similar to html DOM tree. As presented in this image, html is the parent of both the head and the body tags. The head tag is the parent of both the title and link tags, and the body tag is the parent of both the header and the div tags. This is obviously similar to the first image we saw.
+
+This is how it can be shown as html code.
+
+```
+<!DOCTYPE html> 
+
+<html> 
+    <head> 
+        <title> 
+            
+        </title>
+        <link> 
+    </head> 
+    
+    <body> 
+        <header></header>
+        <div></div>
+    </body> 
+</html> 
+```
+
+Let's see the basic structure of all websites.
+
+Every website ,such as google.com, has the basic structure like this one:
+
+```
+<!DOCTYPE html> 
+
+<html> 
+    <head> 
+        <title> 
+            
+        </title>
+    </head> 
+    <body> 
+
+    </body> 
+</html> 
+```
+
+Above code block is the basic structure of any webpage.
+
+## Environment (SETUP)
+How to yinstall Visual Studio Code for Windows ?
+
+1. Go to google.com then search “Download VsCode”.
+2. Click the first link and it will take you to where to download it.
+3. Download any vscode installer that is compatible to you computer.
+4. There are installers for windows , linux and macOS here.
+5. In this tutorial, we am downloading vscode installer for windows.
+6. After downloading the installer, locate it and install it.
+7. VSCode has been installed.  And it is time to open it so that we can use it.
+8. Launch VS Code. 
+
+How to install Vscode for Mac?
+
+1. Go to google.com then search “Download VsCode”.
+2. Click the first link and it will take you to where to download it.
+3. There are installers for windows , linux and macOS here.
+4. Download any vscode installer that is compatible to you computer.
+5. In this tutorial, we am downloading vscode installer for macOS.
+6. Double-click on the downloaded archive to expand the contents.
+7. Drag Visual Studio Code.app to the Applications folder, making it available in the Launchpad.
+8. Launch VS Code.
+
+## Folder Structure
+
+It is time to talk about folder structure.
+
+1. A folder called MyWebsite  contains a folder called assets  and assets contains three 
+    other folders called css, images, and videos and my website also contains two other files 
+    called index.html and main.css.
+
+2. The css folder contains a file called style.css and the images folder contains bg.jpg .
+    Now, the question is, how do we use call main.css, style.css and bg.jpg from index.html.
+
+3. Sibling access: Since index.html is a sibling to main.css, it has direct access to it 
+    e.g ```<link href=“main.css”>``` but that is not applicable to both style.css & bg.jpg because 
+    they are not sibling to index.html. 
+
+4. In order to use style.css and bg.jpg in index.html, we have to pass through assets, css and 
+    images like this ```<link href=“assets/css/style.css”> & <img src=“assets/images/bg.jpg”>```
+
+## What is CSS?
+
+Cascading Style Sheets, widely known as CSS, is a simple design language intended to simplify the process adding styles like fonts and colors to websites. It is used to describes how HTML elements are to be presented on paper, screen, or in other media;
+
+## What is Specificity, cascading and inheritance?
+[Specificity, cascading and inheritance are well explained here](https://www.smashingmagazine.com/2010/04/css-specificity-and-inheritance/)
+
+## CSS selectors
+
+Read them here:
+ 
+1. [CSS Selectors link 1](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+
+2. [CSS Selectors link 2](https://www.w3schools.com/cssref/css_selectors.asp)
+
+## CSS properties and values
+
+### a. Background
+```
+background:
+/* using image */;
+background-image: url(youtoocancode.jpg) 
+          
+/* adding position  */;
+background-position:  top center / 200px 200px 
+
+/* dealing background size */               
+background-size: cover       
+
+/* adding or removing repeat */
+background-repeat: repeat     
+
+/* setting origin */ 
+background-origin: padding-box 
+
+/* clip */
+background-clip: border-box   
+
+/* controlling attachment */
+background-attachment: scroll
+
+/* Adding color */
+background-color: transparent                      
+```
+
+### b. Margin
+
+```
+/* top | right | bottom | left */
+margin: 2px 1em 0 auto; 
+
+/* Set margin top */;
+margin-top: 2px                                    
+
+/* Set margin right */;
+margin-right: 1em                                  
+
+/* Set margin bottom */;
+margin-bottom: 0                                   
+
+/* Set margin left */;
+margin-left: auto                                  
+```
+
+### c. Padding
+
+```
+/* top | right | bottom | left */
+padding: 5px 1em 0 2em;
+
+/* Set padding top */;
+padding-top: 5px                                   
+
+/* Set padding right */;
+padding-right: 1em                                 
+
+/* Set padding bottom */;
+padding-bottom: 0                                  
+
+/* Set padding left */;
+padding-left: 2em 
+```                                 
+
+### d. Text
+
+Property	          |      Description	                                              |     Values
+-------------------|-------------------------------------------------------------------|------------------------------------
+color	          | Sets the color of a text	                                      |  RGB, hex, keyword
+line-height	      | Sets the distance between lines	                                  |  normal, number, length, %
+letter-spacing    |	Increase or decrease the space between characters	              |  normal, length
+text-align	      | Aligns the text in an element	                                  |  left, right, center, justify
+text-decoration	  | Adds decoration to text	                                          |  none, underline, overline, line-through
+text-indent	      | Indents the first lin,e of text in an element	                  |  length, %
+text-transform	  | Controls the letters in an element	                              |  none, capitalize, uppercase, lowercase
+
+### e. Understanding Possible Possitions or Alignment for or within an element
+
+1. Top     - top-left, top-center, top-right.
+2. Center  - center-left, center-center, center-right.
+3. Bottom  - bottom-left, bottom-center, bottom-right.
+
+### f. Border
+
+Property	           |      Description	                                               |     Values
+------------------------|-------------------------------------------------------------------|------------------------------------
+border	               | Sets all the border properties in one declaration	               | border-width, border-style, border-color
+border-bottom	       | Sets all the bottom border properties in one declaration	       | border-bottom-width, border-bottom-style, border-bottom-color
+border-bottom-color	   | Sets the color of the bottom border	                           | border-color
+border-bottom-style	   | Sets the style of the bottom border	                           | border-style
+border-bottom-width	   | Sets the width of the bottom border	                           | border-width
+border-color	       | Sets the color of the four borders	                               | color_name, hex_number, rgb_number, transparent, inherit
+border-left	           | Sets all the left border properties in one declaration	           | border-left-width, border-left-style, border-left-color
+border-left-color	   | Sets the color of the left border	                               | border-color
+border-left-style	   | Sets the style of the left border	                               | border-style
+border-left-width	   | Sets the width of the left border	                               | border-width
+border-right	       | Sets all the right border properties in one declaration	       | border-right-width, border-right-style, border-right-color
+border-right-color	   | Sets the color of the right border	                               | border-color
+border-right-style	   | Sets the style of the right border	                               | border-style
+border-right-width	   | Sets the width of the right border	                               | border-width
+border-style	       | Sets the style of the four borders	                               | none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset, inherit
+border-top	           | Sets all the top border properties in one declaration	           | border-top-width, border-top-style, border-top-color
+border-top-color	   | Sets the color of the top border	                               | border-color
+border-top-style	   | Sets the style of the top border	                               | border-style
+border-top-width	   | Sets the width of the top border	                               | border-width
+border-width	       | Sets the width of the four borders	                               | thin, medium, thick, length, inherit
+
+### g. Positioning:
+
+static, sticky, fixed, relative, absolute.
+Using offset such as top: 0,  left:0 , right: 0, bottom: 0,
+
+### h. Layout - float, flexbox and grid
+1. Float
+```
+/* Float to the right */;
+float: right 
+
+/* Float to the left */ 
+float: left          
+```
+Clearing float
+
+```
+clear: both
+```
+
+i. flexbox
+```
+    /* or inline-flex */
+    display: flex; 
+
+    flex-direction: row | row-reverse | column | column-reverse;
+
+    order: <integer>; /* default is 0 */
+
+    flex-wrap: nowrap | wrap | wrap-reverse;
+
+    /* default 0 */
+    flex-grow: <number>; 
+
+    /* default 1 */
+    flex-shrink: <number>; 
+
+    flex-flow: <‘flex-direction’> || <‘flex-wrap’>
+
+    /* default auto */
+    flex-basis: <length> | auto; 
+
+    justify-content: flex-start | flex-end | center | 
+    space-between | space-around | space-evenly 
+    | start | end | left | right,etc.;
+
+    align-self: auto | flex-start | flex-end 
+    | center | baseline | stretch;
+
+    align-items: stretch | flex-start | flex-end |
+     center | baseline | first baseline | last baseline |
+      start | end | self-start | self-end, etc.
+
+    align-content: flex-start | flex-end | center | 
+    space-between | space-around | space-evenly | stretch |
+     start | end | baseline | first baseline | last baseline , etc.
+```
+    
+[Play with flexbox here](https://flexbox.help/)
+
+[Learning resourse 1](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+[Learning resourse 2](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+    
+
+### j. Grid:
+
+[Learn about grid here: resource 1](https://css-tricks.com/snippets/css/complete-guide-grid/) 
+
+[Learn about grid here: resource 2](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)      
+
+[Play with grid here](https://cssgrid-generator.netlify.com/)
+
+[Or play with grid here](https://grid.layoutit.com/)
+
+
+### i. Color value 
+hexadecimal, rgb, rgba, hsl, 
+
+
+ **# Hexadecimal red-green-blue** can be six or three hexadecimal digits (0 to F).
+Using six digits, the first two specify the amount of red, 
+second two the amount of green, and third two the amount of blue.
+The three-digit form is a shortened notation with the first 
+digit red, second green, and thrid blue. 
+
+For example, p { color: #ff0000 }
+/* is the same as... */
+p { color: #f00 or }
+/* (full red) */
+
+
+**rgb()	Functional red-green-blue** contains three comma-separated values, each from 0 to 255 or 0% to 100%. The first specifies the amount of red, second amount of green, and thrid amount of blue.	 body { background: rgb(0,127,0) } /* is the same as... */ body { background: rgb(0%,50%,0%) }/* (middle green) */ 
+
+**rgba()	Functional red-green-blue with alpha** is a Functional RGB, with an additional value, from 0 to 1, which specifies transparency. 0 is full transparency, 1 is solid, 0.3 is 30% solid, etc. For instance, h1 { background: rgba(0,0,0,0.8) }/* (slightly transparent black) */
+
+**hsl()	Hue-saturation-lightness** contains three comma-separated values.
+The first value, hue, is from 0 to 360, or 0% to 100%, and represents an angle on the color circle. 0 (or 360) is red, 120 is green, 240 is blue, etc.
+
+The second value, saturation, is from 0% (full desaturation) to 100% (full saturation).
+The third value, lightness, is from 0% (black) to 100% (white).	p { color: hsl(240,100%,75%) }/* (pale blue) */
+
+**hsla() Hue-saturation-lightness with alpha** is Hue-saturation-lightness, with an additional value, from 0 to 1, which specifies transparency. 0 is full transparency, 1 is solid, 0.7 is 70% solid, etc. For example,  h1 { background: hsla(0,0%,100%,0.1) }
+/* (very transparent white) */
+
+### j. Browser Optimization
+
+
+### k. List properties
+
+Property	         |      Description	                                                  |     Values
+----------------------|--------------------------------------------------------------------|------------------------------------
+list-style	         | Sets all the properties for a list in one declaration	          | list-style-type, list-style-position, list-style-image, inherit
+list-style-image     | Specifies an image as the list-item marker	                      | URL, none, inherit    
+list-style-position	 | Specifies where to place the list-item marker	                  | inside, outside, inherit
+list-style-type	     | Specifies the type of list-item marker	                          | none, disc, circle, square, decimal, decimal-leading-zero,
+armenian, georgian, lower-alpha, upper-alpha, lower-greek,
+lower-latin, upper-latin, lower-roman, upper-roman,
+
+### l. Font properties
+
+Property	         |      Description	                                                        |     Values
+----------------------|--------------------------------------------------------------------------|------------------------------------
+font	             | Sets all the font properties in one declaration	                        | font-style, font-variant, font-weight, font-size/line-height, font-family, caption, icon, menu, message-box, small-caption, status-bar, inherit
+font-family	         | Specifies the font family for text	                                    | family-name, generic-family, inherit
+font-size	         | Specifies the font size of text	                                        |  length, %, inherit,etc.
+font-style	         | Specifies the font style for text	                                    | normal, italic, oblique, inherit
+font-variant	     | Specifies whether or not a text should be displayed in a small-caps font	| normal, small-caps, inherit
+font-weight	         | Specifies the weight of a font	                                        | normal, bold, bolder, lighter,100, 200, 300, 400, 500, 600, 700, 800, 900, inherit
+
+
+## 11. Error Handling in HTML and CSS.
+### 1. Error messages and how to identify them.
+An error message in html and css are unwanted results. E.g
+
+1. You want two elements to be on a line but you get a result 
+where they appear in different lines.
+
+2. You move an element to the center of the page but it moves to the top-center.
+
+Those are not what you want, right?
+
+3. Typo is also a common error biginners have.
+
+Then, how do you find solutions  to these problems? That takes us to another part.
+
+### 2. How to find solutions to known errors.
+
+All you have to do is to search "how to achieve the result you want on google or youtue" e.google
+
+1. How to move a tag to the center of page using css.
+2. How to display two or more elements inline.
+3. To provide solution to typos, you need to check for: Does the tag have opening and also has ```< and >```?, Does the attribute have = and its value properly quoted? Does the closing tag have / as in ```</header>```. 
+This solution systems will help develop mental models to address common challenges beginners always face while learning html and css.
+
+## Basic Searching System:
+a. How to use "X"?
+b. How to do "Y"?
+c. How to make "X"
+
+From this, you may have a searching format like below:
+
+[Wh?] to [verb] "X";
+
+E.g How to use ```<div>```, 
+
+NOTE: It is tempting to memorize all html and css tags but you don't need to do that...You just have to use them and any time you forget how to use them, check your notes, books, ask someone or search it on youtube or google using the format below.
+
+How to use 'X'. 
+E.g
+1. How to use header tag
+2. How to use video tag
+3. How to setup my computer to learn html.
+
+## Making things with CSS and HTML
+
+### a. How to make known things?
+
+Some people tell you, make a landing page for me and let assume you don't know how to make a landing page.
+
+Then, what would you do?
+
+All you have to do is to use the format to google search it or search it on youtube
+
+E.g 
+
+How to make "X" with [Y]
+
+How to make a landingpage with HTML and CSS.
+
+Then, you will have a lot of results to work with.
+
+
+### b. How to make unknown things
+
+Sometimes, you see some components and you don't know their names and you don't know how to make them. Then, what would you do?
+
+All you have to do is take a picture of each of them and post to a community of developers such as dev.to, stack overflow, tech twitter ,etc.
+
+Most of the time, you don't need to make unknown things because nobody knows about them and people only care about what they know. But if you want to take risks, you can try this:
+
+1. Mix components
+2. Introduce weird arrangements of components.
+3. Just think out of the box.
+
+## Making Components and pages.
+
+Below is the list of commonly used components
+
+1. Button 
+2. Form 
+3. Breadcrumbs    
+4. overlay  
+5. Dropdown menu    
+6. Card     
+7. Profile
+8. Login    
+9. search   
+10. landingpage     
+11. 
+
+
+ 
