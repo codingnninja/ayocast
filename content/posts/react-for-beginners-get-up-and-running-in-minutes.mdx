@@ -3,6 +3,7 @@ title: React for Beginners - Get up and Running in Minutes with Script Tags.
 date: 2020-04-14
 ---
 
+![Images of Buhari, Fela and Sowore](https://miro.medium.com/max/700/1*_7MKG1U8S2uFK_Kl3fXkSQ.png)
 
 Beginners always find it difficult to setup React applications just to learn some basic things, so beginners get discouraged in the process. For this reason, I present this simple tutorial to help you to learn React without its usual setup.
 
@@ -49,13 +50,34 @@ e(
 ```
 
 
-```React.createElement``` takes three arguments — elementType first, props (html attributes) second and children (element value) last. Props is an object, so it can take as many attributes as possible.
+```React.createElement``` takes three arguments — elementType first, props (html attributes) second and children (element content) last. Props is an object, so it can take as many attributes as possible.
 
 ```React.Component``` is used to create reusable components as in:
 
-The component FollowButton initializes ```this.state``` to store data that changes from time to time for use in the component. The data can also be passed down to another component as Props. I will explain STATE and PROP later.
+```js
+const e = React.createElement;
+class FollowButton extends React.Component {
+  constructor(props) {
+    super(pros);
+    this.state = { follow: false };
+  }
+  render() {
+    if (this.state.follow) {
+      return 'You are following this.';
+    }
+    //create like button
+    return e(
+      'button',
+      { onClick: () => this.setState({ follow: true }) },
+      'Follow'
+    );
+  }
+}
+```
 
-There is always a method named ‘render’ on Class components to be triggered to render the component whenever it is used. In the render method above, an if statement is used to check if ```this.state.follow``` is truthy or falsy; If it is truthy, string “You are following this” will be returned, if not, a follow button will be returned instead.
+The component FollowButton initializes ```this.state``` to store data that changes from time to time for use in the component. The data can also be passed down to another component as PROPs. I will explain STATE and PROPs later.
+
+There is always a method named ‘render’ on the major Class component to be triggered to render the component whenever it is used. In the render method above, an if statement is used to check if ```this.state.follow``` is truthy or falsy; If it is truthy, string “You are following this” will be returned, if not, a follow button will be returned instead.
 
 The button returned has an attribute (```onClick```) that takes a fat arrow function as its value. The fat arrow function uses ```this.setState({follow:true})``` to change the value of this.state.follow from false to true. So, any time the button is clicked, this.state.follow will be set to false and string “You are following this” will be returned.
 
@@ -71,11 +93,36 @@ const domEntryPoint = document.getElementById('root');
 ReactDOM.render(e(FollowButton), domEntryPoint);
 ```
 
-Why do we use ```e(FollowButton)``` in the above code?
+##Why do we use ```e(FollowButton)``` in the above code?
 
 It returns element(s) that will be inserted into the DOM through the given entry point.
 
 Combine everything.
+
+```js
+'use strict';
+const e = React.createElement;
+class FollowButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { follow: false };
+  }
+  render() {
+    if (this.state.follow) {
+        return 'You are following this.';
+    }
+  //create like button
+    return e(
+          'button',
+          { onClick: () => this.setState({ follow: true }) },
+          'Follow'
+    );
+  }
+}
+//get DOM entry point with an Id called root
+const domEntryPoint= document.getElementById('root');
+ReactDOM.render(e(FollowButton), domEntryPoint);
+```
 
 In the above code, it is clear that creating elements with React.createElement would be a bit uncomfortable; it is easier to think through html elements. Check the code below to see both of them in action.
 
