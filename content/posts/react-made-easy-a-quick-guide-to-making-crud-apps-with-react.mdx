@@ -1,0 +1,515 @@
+---
+title: React Made Easy - A Quick Guide To Making CRUD Apps with React.
+date: 2020-04-14
+---
+
+
+
+In this part, we will make a simple app that helps you create, edit, update and delete records of foodstuff and their costs. At the end of this part, you would be able to:
+
+ - Make CRUD applications with React.
+ - Have a better understanding of React.
+ - Compose (Bring together) several components to make a user interface.
+ - Show the whole world a portfolio of yours in React.
+
+Get the full source code of foodReca on Github: [FoodReca](https://github.com/codingnninja/FoodReca)
+
+
+## Let's get started. 
+
+
+We need a store to keep the information on our foodstuff, so we are making use of React state to do just that.
+
+
+App.js
+
+```js
+import React from 'react';
+
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      id: null,
+      userId: 1,
+      food: '',
+      cost: '',
+      status: false,
+      foodItem: {},
+      foodItems: [],
+      editing: false
+    };
+  }
+}
+```
+
+
+this.state above is the  store for our simple application (FoodReca). The state contains id, userId, food, cost, status, foodItem, foodItems, and editing.
+Id, userId, food, cost and status are properties of the foodItem, that is, we will put all of them into the foodItem object as in below:
+
+
+```js
+foodItem: {
+    id: null
+    userId: 1,
+    food: '',
+    cost: 0
+    status: false
+ }
+
+```
+
+
+Then, we will - when we have different kinds of food - put all of them into foodItems array as in below:
+
+
+```js
+foodItems: [
+    {id: 1, userId: 1, food: 'Rice', cost: 100, status: false},
+    {id: 2, userId: 1, food: 'Beans', cost: 200, status: false}
+]
+```
+
+All we did above is like packing many units of cookies/biscuits into a pack and then put many packs of such cookies/biscuits in a carton and put everything in a store ```(this.state```.
+
+
+## Setting up components.
+
+
+Let's set up some components:
+
+AddFoodItemForm.js
+
+```js
+import React from 'react'
+
+const AddFoodItemForm = props => {
+  return (
+    <form onSubmit={ props.addFoodItem } className="col-sm-4">
+      <div>
+        <div>
+          <label className="text-white">Food name</label>
+          <input type="text" name="food" value={props.food} onChange={ props.handleInputChange}/>
+        </div>
+        <div>
+          <label className="text-white">Food cost</label>
+          <input type="number" name="cost" value={props.cost} onChange={ props.handleInputChange} />
+        </div>
+        <button> Add food item </button>
+      </div>
+    </form>
+  )
+}
+
+export default AddFoodItemForm;
+```
+
+AddFoodItemForm is the FoodReca’s component that takes inputs for each of the food stuff. It has two inputs, food and cost. We pass food, cost and some methods to AddFoodItemForm as React props and access them as ```{props.food}, {props.cost} and {props.handleInputChange}```.
+
+
+EditFoodItemForm.js
+
+```js
+import React from 'react'
+
+const EditFoodItemForm = props => {
+  return (
+    <form className="col-sm-4">
+      <div>
+        <div>
+          <label className="text-white">Food name</label>
+          <input type="text" name="food" value={props.food} onChange={ props.handleInputChange}/>
+        </div>
+        <div>
+          <label className="text-white">Food cost</label>
+          <input type="number" name="cost" value={props.cost} onChange={ props.handleInputChange} />
+        </div>
+        <button onClick={ props.updateFoodItem }> Update </button>
+        <button onClick={() => props.setEditing(false)}>Cancel</button>
+      </div>
+    </form>
+  )
+}
+
+export default EditFoodItemForm;
+```
+
+
+EditFoodItemForm is the FoodReca’s component that is responsible for editing any existing foodItem. It is almost the same as AddFoodItemForm.
+
+
+FoodItemList.js
+
+```js
+import React from 'react';
+
+  const FoodItemList = (props) => {
+    return (  
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Food</th>
+            <th>Cost</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            { 
+              props.foodItems.length > 0 ? (
+                props.foodItems.map((foodItem) => (
+                    <tr key={foodItem.id}>
+                      <td>{ foodItem.id }</td>
+                      <td>{ foodItem.food }</td>
+                      <td>{ foodItem.cost }</td>
+                      <td>
+                        <button className="btn btn-primary ml-2" onClick={() => props.editFoodItem(foodItem) }>Edit</button>
+                        <button className="btn btn-danger ml-2" onClick={() => props.deleteFoodItem(foodItem.id) }>Delete</button>
+                        <button className="btn btn-info ml-2" onClick={() => props.boughtFoodItem(foodItem) }>
+                          { foodItem.status ? 'bought' : 'pending' }
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )
+              ) : (
+                <tr>
+                  <td colSpan={3}>No food for a lazy man</td>
+                </tr>
+              )
+            }
+        </tbody>
+      </table>
+    );
+  }
+
+
+export default FoodItemList;
+```
+
+
+AddFoodList is the FoodReca’s component that displays all food items as a list. We pass some properties and methods to AddFoodList through React props and access them as ```{props.editFoodItem}, {props.cost}``` and so on.
+Adding food items to the store.
+
+
+### Wait a minute!
+
+
+How do you add items to your store in the real world? You break the door. You break the roof or you destroy the store.
+
+
+Think about this question and let your answers guide you while dealing with React state.
+
+
+Let’s add food items to the store ```(this.state)```.
+
+
+```js
+import React from 'react';
+
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      id: null,
+      userId: 1,
+      food: '',
+      cost: '',
+      status: false,
+      foodItem: {},
+      foodItems: [],
+      editing: false
+    };
+    
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.addFoodItem = this.addFoodItem.bind(this);
+  }
+
+  handleInputChange(event) {
+    event.preventDefault();
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+ 
+    this.setState({
+      [name]:value
+    })
+  }
+
+  addFoodItem(event){
+    event.preventDefault()
+    if (!this.state.food) return;
+    const foodItem = {
+      id: this.state.foodItems.length + 1,
+      food: this.state.food,
+      cost: this.state.cost,
+      userId: this.state.userId,
+      statu: this.state.status
+    };
+
+    this.setState({
+      food: '',
+      cost: '',
+      foodItem: foodItem,
+      foodItems: [...this.state.foodItems, foodItem]
+    })
+  }
+}
+
+export default App;
+```
+
+Let's start with:
+
+```js
+this.handleInputChange = this.handleInputChange.bind(this);
+this.AddFoodItem = this.AddFoodItem.bind(this);
+```
+
+As bind( ) needs a separate tutorial to explain it understandably, I recommend you read about it [ HERE ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind?source=post_page-----22f2da388e4b----------------------).
+
+
+### Getting inputs from a form.
+
+
+```js
+handleInputChange(event) {
+  const target = event.target;
+  const value = target.value;
+  const name = target.name;
+ 
+  this.setState({
+    [name]:value
+  })
+}
+```
+
+This method ( handleInputChange ) takes inputs and put them in React state. ```event.target``` refers to the input box, ```target.value``` gets whatever is written in the input box, target.name get the name of the input box and we use ```this.setState( )``` to put them in the state.
+
+
+Adding cost, food and others to foodItem.
+
+
+```js
+ addFoodItem(event){
+    event.preventDefault()
+    if (!this.state.food) return;
+    const foodItem = {
+      id: this.state.foodItems.length + 1,
+      food: this.state.food,
+      cost: this.state.cost,
+      userId: this.state.userId,
+      statu: this.state.status
+    };
+  
+    this.setState({
+      food: '',
+      cost: '',
+      foodItem: foodItem,
+      foodItems: [...this.state.foodItems, foodItem]
+    })
+  }
+```
+
+
+Since handleInputChange has done its job by taking users’ inputs and pairing such inputs with food and cost, addFoodItem only needs to pack food, cost and other non-dynamic values into an object named foodItem. Finally, foodItem will be packed into an array named foodItems just like packing units of cookies into packs and packs into cartons.
+
+
+After adding food and cost to foodItem, we set them to an empty string so that the input boxes will be empty after the addItem button is clicked.
+
+
+The most important thing to pay attention to are ```this.setState( ) and […this.state.foodItems, foodItem ]. this.setState( )``` changes values of properties in ```this.state and […this.state.foodItems, foodItem]``` takes existing foodItems in the state and adds a new food item to it.
+
+
+### Displaying food items.
+
+We are going to use the previously created components: FoodItemList, AddFoodItem and EditFoodItem.
+
+```js
+render() {
+    const { cost, food, foodItems, editing } = this.state;
+      return (
+        <div className="App">
+          <div className="row App-main">
+            <FoodItemList 
+              foodItems= {foodItems} 
+              deleteFoodItem={this.deleteFoodItem}
+              boughtFoodItem={this.boughtFoodItem}
+              editFoodItem={this.editFoodItem}
+            />
+          </div>
+          <div className="row App-main">
+          { 
+            editing  ? (
+            <EditFoodItemForm 
+             food={this.state.food}
+             cost={this.state.cost} 
+             handleInputChange={this.handleInputChange}
+             setEditing={this.setEditing}
+             updateFoodItem={this.updateFoodItem}
+            />
+            ) : (
+            <AddFoodItemForm 
+              food={this.state.food}
+              cost={this.state.cost} 
+              handleInputChange={this.handleInputChange} 
+              addFoodItem={this.addFoodItem}
+            />
+            )
+          }
+          </div>
+        </div>
+      );
+    }
+```
+
+
+To display food items, we need to pass down some data and methods which are used by the components.
+
+
+```js
+const { cost, food, foodItems, editing } = this.state;
+
+```
+
+The above code helps us get all the data/properties we need from the state so as to use them in the components.
+
+
+It is necessary to pay attention to how the ternary operator is used to render AddFoodItemForm and EditFoodItemForm. When editing is set to false, AddFoodItemForm will be displayed while EditFoodItemForm will be displayed if editing is set to true. After display food items, what next?
+
+
+### Deleting food items.
+
+
+Whenever the delete button on a food item is clicked, the id of such item is passed to deleteFoodItem to delete the item. As the footItems is an array of objects, we call filter to remove any item that has the same id with the food item clicked.
+
+
+Then, ```this.setState( )``` is used to update foodItems in the state by setting it to the current value.
+
+
+```js
+deleteFoodItem(id) {
+  const foodItems = this.state.foodItems.filter( item => item.id !== id );
+  this.setState({foodItems: foodItems});
+}
+
+```
+
+
+### Setting food item’s status (Bought or Pending).
+
+
+In this case, there is a need to toggle between “pending” and “bought”. We do that by passing the current food item to boughtFoodItem method and updates the status of the clicked item to either true or false.
+
+
+Then, it loops through ```this.state.foodItems``` to get any food item that has the same id as the food item passed to boughtFoodItem. Once any food item with the same id is found, such item will be replaced with the updated current food item and if it doesn’t find any item, nothing will be updated.
+
+
+```js
+//this does the checking explained above.
+foodItem.id === currentFoodItem.id ? updatedCurrentFoodItem : foodItem;
+```
+
+
+### Editing food items.
+
+
+EditFoodItem sets the input boxes to the value of the food item selected so that users can edit them. It is very similar to addFoodItem but a bit different because it sets editing to true to use EditFoodItemForm.
+
+
+SetEditing only updates editing to either true or false through ```this.setState( )```. It will throw an error if a non-boolean value is passed to it.
+
+```js
+editFoodItem(foodItem) {
+  this.setEditing(true);
+  this.setState({
+    food:foodItem.food,
+    cost:foodItem.cost,
+    foodItem: foodItem
+  });
+}
+
+setEditing(value) {
+  if(typeof value !== 'boolean') { throw " This value must either be true or false"}
+  this.setState({
+    editing: value
+  })
+}
+```
+
+
+### Updating food items.
+
+
+Updating food items is similar to how we updated the state in boughtFoodItem. The only difference is that we have more properties to update in this case.
+
+
+So, let’s test your understanding on how to update React state based on what you have learnt in this article.
+
+
+Explain this to yourself aloud! Big Brother is watching you.
+
+```js
+updateFoodItem(event) {
+  event.preventDefault();
+  const updatedFood = this.state.food;
+  const updatedCost = this.state.cost;
+  const updatedFoodItem = Object.assign({}, this.state.foodItem, { food: updatedFood, cost: updatedCost })
+  const foodItems = this.state.foodItems.map((foodItem) => (foodItem.id === this.state.foodItem.id ? updatedFoodItem : foodItem));
+  this.setState({ food:'', cost: '', foodItems: foodItems});
+}
+```
+
+### Conclusion:
+
+
+You have learnt how to create, edit, update and delete a React component in this tutorial without mutating the state. It is always good to only mutate the state with ```this.setState( )``` or Hooks.
+
+
+Pay great attention to the lines below because they are the basic you will always use in any React application.
+
+
+#### 1: Method Binding
+
+
+```js
+this.handleInputChange = this.handleInputChange.bind(this);
+```
+
+#### 2: Adding to state
+
+
+```js
+this.setState({
+   foodItems: [...this.state.foodItems, foodItem]
+})
+```
+
+#### 3: Deleting from state
+
+
+```js
+const foodItems = this.state.foodItems.filter( item => item.id !== id );this.setState({foodItems: foodItems});
+```
+
+#### 4: Updating the state
+
+
+```js
+const updatedFoodItem = Object.assign({}, this.state.foodItem, { food: updatedFood, cost: updatedCost })
+```
+
+And make sure you understand how editFoodItem changes the components. Above all, there are other ways to achieve all I listed above but you need to understand whatever you do.
+
+Feel free to point out anything that could have been better!
+
+Thanks for reading!
+
+Best regards,
+
+Ayobami.
+
+Let’s talk on twitter: [codingnninja](www.twitter.com/codingnninja)
+

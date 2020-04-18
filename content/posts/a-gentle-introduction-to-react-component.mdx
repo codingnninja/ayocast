@@ -1,0 +1,152 @@
+---
+title: React Made Easy - A Gentle Introduction to React Components.
+date: 2020-04-14
+---
+
+![Computer Components](https://miro.medium.com/max/1400/1*soN8tHermTXU8b9vSl3CmA.jpeg)
+
+When I started learning Reactjs, I wondered when and how to use React components until I wrapped my mind around it. This is why I love helping people to think through react component examples.
+
+A component is a part of an object that is detachable and pluggable to another object of the same family. For example, a computer has several components such as the monitor, keyboard, mouse and system unit to mention few. For you to have a computer, you need to bring these components together.
+
+React components are just like a computer component; they can be composed (brought together) to make a user interface of an application.
+
+Let’s assume your website needs login and signup pages but you want either login or signup content to appear in a dialog depending on the button clicked. That is, when login is clicked, login content should appear in the dialog and signup content should appear if signup is clicked.
+
+The first thing to do is to get your pen and paper to think through everything. Look for the common parts between the contents of both login and signup and abstract it into a component.
+
+Common: Dialog
+
+Specific: Login content
+
+specific: Signup content
+
+Now, you can use the dialog, login and signup content independent of one another anywhere in your application.
+
+Let’s convert the above explanation to code
+
+## Dialog 
+**(A “function” component)**
+
+```js
+function Dialog(props) {
+  return (
+    <div className="dialog">
+      <h1 className="Dialog-title">
+        {props.title}
+      </h1>
+      <p className="Dialog-message">
+        {props.message}
+      </p>
+      {props.children}
+    </div>
+  );
+}
+```
+
+The Dialog above makes use of a function component and takes “props” as an argument. In the dialog, ```{props.title} and {props.message}``` are used to get values ( title and message) passed as attributes of Dialog. For example,
+
+```js
+<Dialog title="Sign up now" message="Get superpowers for free">
+  <input name={this.state.login} onChange={this.handleLogin} />
+</Dialog>
+```
+
+In the above code, title and message are attributes of Dialog which are got with ```{props.title} and {props.message}```.
+
+Hey! How can I get the elements between``` <Dialag> and </Dialog>```?
+
+Just wait!
+
+Look for ```{props.children}``` in the function Dialog; Okay, you have checked it. ```{props.children}``` refers to or get anything between ```<Dialog> and </Dialog>```.
+
+We are through with the common part of both Login and Signup pop-up; It is time to create Login and Signup components.
+
+## Signup 
+**(A class component)**
+
+```js
+class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.state = {username: ''};
+  }
+
+  render() {
+    return (
+      <Dialog title="Signup now"
+              message="Get superpowers for free.">
+        <input value={this.state.username}
+               onChange={this.handleChange} />
+
+        <button onClick={this.handleSignUp}>
+          Sign Me Up!
+        </button>
+      </Dialog>
+    );
+  }
+  
+  handleChange(e) {
+    this.setState({username: e.target.value});
+  }
+
+  handleSignUp() {
+    alert(`Welcome aboard, ${this.state.username}!`);
+  }
+}
+```
+
+## Login:
+**(A class component)**
+
+```js
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
+    this.state = {username: ''};
+  }
+
+  render() {
+    return (
+      <Dialog title="Login now"
+              message="Get more superpowers for free">
+        <input value={this.state.username}
+               onChange={this.handleChange} />
+
+        <button onClick={this.handleLogIn}>
+          Log Me In!
+        </button>
+      </Dialog>
+    );
+  }
+  handleChange(e) {
+    this.setState({username: e.target.value});
+  }
+
+  handleLogIn() {
+    alert(`Welcome back, ${this.state.username}!`);
+  }
+}
+```
+
+We have created three components that can be used independently. Both Login and Signup components make use of Dialog components and Dialog component may also be used in another component until a required user interface is created.
+
+To understand react user interfaces and components, you need to always take your time to think through your application to break it into reusable units that can be brought together to create user interfaces. Just like the keyboard, Mouse, Monitor and System unit are brought together to create a computer; your components should be brought together to create user interfaces.
+
+Take your pen and paper to create components for a dashboard that displays blog posts, food and amount of money you spend daily. Then, compose the components to make the required dashboard.
+
+In conclusion, React components are separate parts of a user interface(s) and thinking through them will help you understand your application very well.
+
+Thanks for reading.
+
+Best regards
+
+Ayobami.
+
+Any additions, subtractions or opinion? 
+
+Let’s talk on twitter: [codingnninja](www.twitter.com/codingnninja)

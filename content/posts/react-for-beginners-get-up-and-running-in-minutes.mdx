@@ -1,0 +1,177 @@
+---
+title: React for Beginners - Get up and Running in Minutes with Script Tags.
+date: 2020-04-14
+---
+
+
+Beginners always find it difficult to setup React applications just to learn some basic things, so beginners get discouraged in the process. For this reason, I present this simple tutorial to help you to learn React without its usual setup.
+
+Let’s get started.
+
+In this tutorial, you will learn how to use React. Component, ReactDom, State, Prop and data handling in React applications.
+Step 1: Add ```<script>```Tag to your HTML Document.
+
+Add these script tags to your html document as in below:
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        ...The rest of html code...
+        <!--react, reactDom and babel links -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <!-- Don't use this in production: -->
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+</html>
+```
+
+Why do we need the three ```<script>``` tags?
+
+React helps in creating reusable UI components (divisions) which present data that changes from time to time. The components can be composed (brought together ) to make the main user interface or more.
+
+React does not use template or DOM directives like some MVC frameworks or libraries, so it presents alternatives such as React.Component, React.createElement, etc. that are composable using JavaScript.
+
+```js
+const e = React.createElement;
+e(
+  'button',
+  { className: 'react'},
+  'React'
+);// above code is similar to 
+<button className="React">
+  React
+</button>
+```
+
+
+```React.createElement``` takes three arguments — elementType first, props (html attributes) second and children (element value) last. Props is an object, so it can take as many attributes as possible.
+
+```React.Component``` is used to create reusable components as in:
+
+The component FollowButton initializes ```this.state``` to store data that changes from time to time for use in the component. The data can also be passed down to another component as Props. I will explain STATE and PROP later.
+
+There is always a method named ‘render’ on Class components to be triggered to render the component whenever it is used. In the render method above, an if statement is used to check if ```this.state.follow``` is truthy or falsy; If it is truthy, string “You are following this” will be returned, if not, a follow button will be returned instead.
+
+The button returned has an attribute (```onClick```) that takes a fat arrow function as its value. The fat arrow function uses ```this.setState({follow:true})``` to change the value of this.state.follow from false to true. So, any time the button is clicked, this.state.follow will be set to false and string “You are following this” will be returned.
+
+It is time to display the returned value in the browser. That brings us to ReactDom.
+
+The ReactDom is the bridge or interpreter between React and the DOM. It takes React components, convert it to something usable in by the DOM and send it to the DOM.
+
+If you notice, there is an ```<div id=”root”></div>``` in the html code above and it is the entry point to the DOM from ReactDom as in:
+
+```js
+//get DOM entry point with an Id called root
+const domEntryPoint = document.getElementById('root');
+ReactDOM.render(e(FollowButton), domEntryPoint);
+```
+
+Why do we use ```e(FollowButton)``` in the above code?
+
+It returns element(s) that will be inserted into the DOM through the given entry point.
+
+Combine everything.
+
+In the above code, it is clear that creating elements with React.createElement would be a bit uncomfortable; it is easier to think through html elements. Check the code below to see both of them in action.
+
+```js
+const e = React.createElement;
+e(
+  'button',
+  { className: 'react'},
+  'React'
+);// above code is similar to 
+<button className="react">
+  React
+</button>
+```
+
+So, we will introduce JSX — a mixture of HTML and JavaScript.
+
+The quickest way to try JSX in your project is to add a ```<script>``` tag, that points to babel, to your page:
+
+Babel included in our html is meant to convert JSX to a JavaScript equivalent understood by many browsers. Why does that necessary? JSX — the use of html in components — is more convenient as you will see later in this tutorial. You can play with JSX using this online converter.
+Let’s Build a Trivial Simple Voting React App.
+
+Before then, what is STATE and what is PROPS?
+
+## STATE
+
+The component’s state is a way of storing data in React . Therefore, any data that can be changed from time to time — based on user interactions or anything else— is stored in a component’s state in a given application. State can be initialized by setting this.state in the ```constructor( )``` of a given class as in:
+
+```js
+constructor(props){
+  super(props);
+  this.state = {
+    message: "Click on image to vote"
+  };
+}
+```
+
+
+This state can be changed directly by the component by resetting values of the given properties through ```this.setState({pair:value})``` as in below.
+
+```js
+return e(
+  'button',
+  { onClick: () => this.setState({ message: 'New message'}) },
+  'Like'
+);
+```
+
+
+## PROPS
+
+Props are read-only data storage used in React. They can neither be changed nor destroyed; they can only be passed down to another component as in:
+
+```js
+ReactDOM.render(
+    <Hello message="my friend" />, //or message={this.props.message}
+    document.getElementById("root")
+);
+```
+Props can be accessed or used in component ```<Hello/>``` as in:
+
+```js
+class Hello extends React.Component {
+    render() {
+        return <h1>Hello {this.props.message}!</h1>;
+    }
+}
+```
+
+
+The curly braces around this.props.message tells JSX that we are adding a JavaScript expression and it is called escaping.
+
+Let’s start building the trivial simple voting application. Wait! Let’s see if you really understand all I have explained. Check and think through the source code of our voting app and see if you can understand it.
+
+View the trivial app on codepen: [trivial app](https://codepen.io/codingnninja/full/ZMyVZg)
+
+Do you understand a thing?
+
+The only things we have not talked about are the included methods and the bindings. Each of the methods is meant to update the state that is why they all used ```this.setState({ })``` to change the value of the message in ```this.state```. I repeated the methods not to add more complication to the write-up. Take it as such.
+
+We also set our methods to their equivalents that target a current object. We used ```this.VoteForBuhari( ){ this.setState({message:’You just voted for Buhari’})}``` to update the state.
+
+We also used onClick attribute on the images we have above. It means that the function set to onClick will be called any time its corresponding image is clicked, that is, it updates the state with another message value.
+
+You can access a state property from within the component that defines it. That is why we are able to use ```<h1>{this.state.message}</h1>``` in the render method. What it does in the simple app is setting the default value for the app before any image is clicked.
+
+Boom! Boom boom! Boom boom boom!
+
+Viola!
+
+But wait, I want to leave you with repetitive code; I repeated almost similar things in the methods that update the state and I also repeated the ```<img>``` which I should have abstracted into another component. Those are your assignment for this tutorial.
+
+If you can, convert the three methods to just one and remove the repetitive ```<img>``` tag; then put it into another component. That is your assignment.
+
+Thanks for reading.
+
+Any additions, subtractions or opinion? 
+
+Let’s talk on twitter: [codingnninja](www.twitter.com/codingnninja)

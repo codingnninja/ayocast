@@ -7,9 +7,9 @@ import { Styled } from "theme-ui"
 
 export default () => (
   <Fragment>
-    <Styled.a href="hthtp:ayocast.com/">Ogundiran Ayobami</Styled.a>
+    <Styled.a href="hthtps://www.twitter.com/codingnninja">Ayobami Ogundiran</Styled.a>
     {` `}
     <br />
-    I am making programming easy for all.
+    Making programming easy to learn.
   </Fragment>
 )

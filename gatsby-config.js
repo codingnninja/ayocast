@@ -7,7 +7,7 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `AYOCAST`,
+    title: `You Too Can Code`,
     author: `Ogundiran Ayobami`,
     description: `Making programming easy for all`,
     social: [
